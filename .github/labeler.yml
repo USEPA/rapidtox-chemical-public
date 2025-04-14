@@ -1,0 +1,73 @@
+# Add 'root' label to any root file changes
+# Quotation marks are required for the leading asterisk
+#root:
+#- changed-files:
+ # - any-glob-to-any-file: '*'
+
+# Add 'AnyChange' label to any changes within the entire repository
+#AnyChange:
+#- changed-files:
+ # - any-glob-to-any-file: '**'
+
+# Add 'Documentation' label to any change within 'README.md' file
+documentation:
+- changed-files:
+  - any-glob-to-any-file: [ '**/*.md' ]
+  
+# Add 'gitignore' label to any changes in '.gitignore' file
+gitignore:
+- changed-files:
+  - any-glob-to-any-file: [ '.gitignore/*' ]
+
+# Add 'maven wrapper' label to any files change within '.mvn/wrapper'
+maven wrapper:
+- changed-files:
+  - any-glob-to-any-file: [ '.mvn/wrapper/*' ]
+  
+ # Add 'pom.xml/server.xml-change' label to any change within 'pom.xml' and 'server.xml' files 
+pom.xml/server.xml-change:
+- changed-files:
+  - any-glob-to-any-file: [ '**/*.xml' ] 
+
+ # Add 'build-config' label to any change within in 'mvnw' and 'mcnw.cmd' files 
+mvn-build-config:
+- changed-files:
+  - any-glob-to-any-file: ['**/*.cmd', 'mvnw/*']
+
+# Add 'pipeline-change' label to any change within 'Dockerfile' and '.github/workflows' files
+pipeline-change:
+- changed-files:
+  - any-glob-to-any-file: [ 'Dockerfile/*', '.github/**/*' ]
+     
+
+# Add 'app-source' label to any files change within 'src/main/java/gov/epa/ccte/api/chemical'
+app-source-code:
+- all:
+  - changed-files:
+    - any-glob-to-any-file: ['src/main/java/**/*']
+    #- any-glob-to-any-file: 'src/**/*'
+    #- all-globs-to-all-files: '!src/docs/*'
+    
+# Add 'config-files' label to any files change within 'src/main/resources/config/'
+config-files:
+- all:
+  - changed-files:
+    - any-glob-to-any-file: ['src/main/resources/**/*']
+
+# Add 'test-files' label to any files change within 'src/test/java/gov/epa/ccte/api/chemical'
+test-source-code:
+- all:
+  - changed-files:
+    - any-glob-to-any-file: ['src/test/**/*' ]
+
+# Add 'feature' label to any PR where the head branch name starts with `feature` or has a `feature` section in the name
+feature:
+ - head-branch: ['^feature', 'feature', 'feature/*', 'feat/*', 'Feature/*', 'Feature', '^Feature']
+ 
+# Add 'bug fixes ' label to any PR where the head branch name starts with `bug fixes` or has a `bug fixes` section in the name
+bug-fixes:
+ - head-branch: ['^bug', 'fix', 'bug', '^fix', fix/*, bug/*, 'Bug/*', 'Bug' , 'Fix', 'Fix/*', '^Fix', '^Bug', 'Bug/*'] 
+
+# Add 'release' label to any PR that is opened against the `main` branch
+release:
+ - base-branch: 'main'
